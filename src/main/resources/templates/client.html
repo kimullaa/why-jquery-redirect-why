@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>HELLO</title>
+</head>
+<body>
+<button id="btn" type="button" >send...</button>
+<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<script type="application/javascript">
+    $(function () {
+        $("#btn").on("click", function () {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/redirect",
+//                dataType: "json", //型エラーでfail呼ばれちゃうのでコメントアウト
+            }).done(function (data,textStatus,jqXHR) {
+                console.log(data,textStatus,jqXHR);
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR, textStatus, errorThrown);
+            });
+        })
+        ;
+    });
+
+</script>
+</body>
+</html>
